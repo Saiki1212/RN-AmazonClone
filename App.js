@@ -1,12 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import StackNavigator from './AllFolders/Navigation/StackNavigator';
+import store from './Redux/store';
+import { Provider } from 'react-redux';
+import { ModalPortal } from 'react-native-modals';
+import { UserContext } from './UserContext';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <Provider store={store}>
+        <UserContext>
+          <StackNavigator/>
+          <ModalPortal/>
+        </UserContext>
+        
+      </Provider>
+    </>
   );
 }
 
